@@ -14,7 +14,7 @@ def main():
     parser = argparse.ArgumentParser(prog='Prefix/Infix Calculator')
 
     parser.add_argument('mode', type=str, choices=calculator_dict.keys(), help='Operation mode')
-    parser.add_argument('sequence', type=str, nargs='*', help='calculation sequence to process')
+    parser.add_argument('sequence', type=str, help='Expression to parse (str)')
     
 
     parsed_args = parser.parse_args()
