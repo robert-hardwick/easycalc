@@ -24,7 +24,7 @@ Example
 
 ## Web API
 
-API Definition provided at [easycalc/docs/openapi.yaml](docs/openapi.yaml)
+API Definition provided at [easycalc/docs/openapi.yaml](easycalc/docs/openapi.yaml)
 
 Run API server directly
 
