@@ -10,7 +10,9 @@ import click
 def main():
   pass
 
-@main.command(name="cli")
+@main.command(name="cli", context_settings=dict(
+    ignore_unknown_options=True,
+))
 @click.argument('calculator', type=click.Choice(valid_calculators()))
 @click.argument('expr', type=str)
 def cli_cmd(calculator, expr):
