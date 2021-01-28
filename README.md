@@ -5,17 +5,14 @@ Simple Infix and Prefix calculator and Flask-based web api.
 ## Setup
 
     $ git clone https://github.com/robert-hardwick/easycalc.git
-    $ cd easycalc/easycalc
+    $ cd <REPO>/easycalc
     $ python -m pip install -r requirements.txt
 
-## Basic Usage
-
-The standalone CLI and Web API use the same invocation script (main.py).
-
-### Standalone CLI Mode
+## Standalone CLI
 
 To run command line
 
+    $ cd <REPO>/easycalc
     $ python main.py cli [prefix|infix] [EXPRESSION]
 
 Example
@@ -25,17 +22,18 @@ Example
     $ python main.py cli infix "3 - 2"
     > 1.0
 
-### Web API Mode
+## Web API
 
 API Definition provided at [easycalc/docs/openapi.yaml](docs/openapi.yaml)
 
 Run API server directly
 
+    $ cd <REPO>/easycalc
     $ python main.py api --port <PORT> (default = 8888)
 
 Run containerized web service
 
-    $ cd </path/to/repo/root>
+    $ cd <REPO>
     $ sh ./start_service.sh
 
 Use curl to send some requests
