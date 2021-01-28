@@ -1,6 +1,6 @@
 import pytest
-from easycalc.calculators import calculate_infix
-from easycalc.exceptions import InvalidExpressionException
+from easycalc.core.calculators import calculate_infix
+from easycalc.core.exceptions import InvalidExpressionException
   
 # Test Simple Addition  
 def test_addition():  

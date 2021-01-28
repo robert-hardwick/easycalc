@@ -3,8 +3,8 @@
 Prefix and Infix expression calculation algorithms
 """
 
-from easycalc.utils import get_operator, is_operator, get_operator_precendence
-from easycalc.exceptions import InvalidExpressionException, InvalidOperatorException
+from easycalc.core.utils import get_operator, is_operator, get_operator_precendence
+from easycalc.core.exceptions import InvalidExpressionException, InvalidOperatorException, InvalidCalculatorException
 
 def calculate_prefix(expr):
     """Performs calculation of prefix expression
@@ -121,3 +121,16 @@ def calculate_infix(expr):
         raise InvalidExpressionException()
 
     return operand_stack[-1]
+
+calculator_dict = {
+    "prefix" : calculate_prefix,
+    "infix" : calculate_infix
+}
+
+def valid_calculators():
+    return calculator_dict.keys()
+
+def calculate(calculator, expr):
+    if calculator not in valid_calculators():
+        raise InvalidCalculatorException()
+    return calculator_dict[calculator](expr)

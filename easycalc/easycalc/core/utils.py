@@ -4,7 +4,7 @@ Common utils
 """
 
 import operator
-from easycalc.exceptions import InvalidOperatorException
+from easycalc.core.exceptions import InvalidOperatorException
 
 operator_dict = {
     '+' : ( operator.add, 2 ),

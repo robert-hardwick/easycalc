@@ -1,38 +1,37 @@
 # Easycalc - Prefix and Infix Calculator
 
-Simple Infix and Prefix calculator.
+Simple Infix and Prefix calculator and Flask-based web api.
 
-## easycalc
+## Setup
 
-library and standalone command-line app
+    $ git clone https://github.com/robert-hardwick/easycalc.git
+    $ cd easycalc/easycalc
+    $ python -m pip install -r requirements.txt
 
-### Setup
+## Basic Usage
 
-    $ python -m pip install -r easycalc/requirements.txt
+The standalone CLI and Web API use the same invocation script (main.py).
 
-### Basic Usage
+### Standalone CLI
 
 To run command line
 
-    $ python -m easycalc 'prefix|infix' expr
+    $ python main.py cli 'prefix|infix' expr
 
-To run tests
+Example
 
-    $ python -m unittest easycalc.tests
+    $ python main.py cli prefix "+ 1 1"
 
-## easycalc-api
+### Web API
 
-Flask-based web service for easycalc
+Run API server directly
 
-### Setup
+    $ python main.py api --port <PORT> (default = 8888)
 
-    $ python -m pip install -r easycalc-api/requirements.txt
+Run containerized web service
 
-### Basic Usage
-
-To start the web api
-
-    $ python -m easycalc-api (Optional) --port <PORT>
+    $ cd </path/to/repo/root>
+    $ sh ./start_service.sh
 
 Use curl to send some requests
 
@@ -63,6 +62,12 @@ Invalid url:
     response = 
     {"code":null,"data":null,"message":"Bad request","success":false}
 
-To run tests
+## Run Tests
 
-    $ python -m unittest easycalc-api.tests
+Install pytest
+
+    $ python -m pip install pytest
+
+Run tests
+
+    $ python -m pytest tests
