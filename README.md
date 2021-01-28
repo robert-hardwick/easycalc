@@ -73,4 +73,5 @@ Install pytest
 
 Run tests
 
+    $ cd <REPO>/easycalc
     $ python -m pytest tests
