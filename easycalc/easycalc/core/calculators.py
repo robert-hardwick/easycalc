@@ -128,9 +128,30 @@ calculator_dict = {
 }
 
 def valid_calculators():
+    """Gets a list of valid calculator keys
+
+    Returns
+    -------
+    list
+        valid calculators
+    """
     return calculator_dict.keys()
 
 def calculate(calculator, expr):
+    """Parses expression using calculator specified by name
+
+    Parameters
+    ----------
+    calculator : str
+        Name of calculator to be used
+    expr : str
+        Expression to be interpreted
+
+    Returns
+    -------
+    float
+        result of prefix calculation
+    """
     if calculator not in valid_calculators():
         raise InvalidCalculatorException()
     return calculator_dict[calculator](expr)

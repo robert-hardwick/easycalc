@@ -12,17 +12,22 @@ Simple Infix and Prefix calculator and Flask-based web api.
 
 The standalone CLI and Web API use the same invocation script (main.py).
 
-### Standalone CLI
+### Standalone CLI Mode
 
 To run command line
 
-    $ python main.py cli 'prefix|infix' expr
+    $ python main.py cli [prefix|infix] [EXPRESSION]
 
 Example
 
     $ python main.py cli prefix "+ 1 1"
+    > 2.0
+    $ python main.py cli infix "3 - 2"
+    > 1.0
 
-### Web API
+### Web API Mode
+
+API Definition provided at [easycalc/docs/openapi.yaml](docs/openapi.yaml)
 
 Run API server directly
 

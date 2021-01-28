@@ -17,9 +17,7 @@ def client(app):
 
 def test_bad_command(app, client):
     res = client.get('/invalid')
-    assert res.status_code == 401
-    expected_rc = ReturnCode.error_bad_request.value
-    assert expected_rc == json.loads(res.get_data(as_text=True))["return_code"]
+    assert res.status_code == 404
 
 def test_no_expression(app, client):
     res = client.get('/prefix')
@@ -44,3 +42,16 @@ def test_valid_infix(app, client):
     assert expected_rc == json.loads(res.get_data(as_text=True))["return_code"]
     expected_data = 4.0
     assert expected_data == json.loads(res.get_data(as_text=True))["data"]
+
+
+def test_invalid_expr(app, client):
+    res = client.get('/prefix?expr=2%20%2B%202')
+    assert res.status_code == 200
+    expected_rc = ReturnCode.error_invalid_expression.value
+    assert expected_rc == json.loads(res.get_data(as_text=True))["return_code"]
+
+def test_invalid_oper(app, client):
+    res = client.get('/infix?expr=2%20%26%202')
+    assert res.status_code == 200
+    expected_rc = ReturnCode.error_invalid_operator.value
+    assert expected_rc == json.loads(res.get_data(as_text=True))["return_code"]

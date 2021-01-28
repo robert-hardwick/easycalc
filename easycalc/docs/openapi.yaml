@@ -1,0 +1,96 @@
+openapi: 3.0.0
+info:
+  title: Easycalc API
+  description: API Definition for easycalc Infix and Prefix calculator
+  version: 0.1.9
+paths:
+  /prefix:
+    get:
+      summary: Performs prefix calculation.
+      parameters:
+        - name: expr
+          in: query
+          required: true
+          description: Expression to perform calculation on.
+          schema:
+            type : string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                success:
+                  value:
+                    return_code: 1
+                    success: "True"
+                    data: "1.0"
+                error:
+                  value:
+                    return_code: 32
+                    success: "False"
+                    message: "Invalid Expression"
+        '401':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              example:
+                return_code: 21
+                success: "False"
+  /infix:
+    get:
+      summary: Performs infix calculation.
+      parameters:
+        - name: expr
+          in: query
+          required: true
+          description: Expression to perform calculation on.
+          schema:
+            type : string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              examples:
+                success:
+                  value:
+                    return_code: 1
+                    success: "True"
+                    data: "1.0"
+                error:
+                  value:
+                    return_code: 32
+                    success: "False"
+                    message: "Invalid Expression"
+        '401':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+              example:
+                return_code: 21
+                success: "False"
+components:
+  schemas:
+    Response:
+      properties:
+        return_code:
+          type: integer
+        success:
+          type: string
+        message:
+          type: string
+        data:
+          type: object
+      # Both properties are required
+      required:  
+        - return_code
+        - success

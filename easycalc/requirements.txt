@@ -1,2 +1,4 @@
-flask
-requests
+requests==2.25.0
+flask==1.1.1
+click==7.1.0
+pytest==6.2.2

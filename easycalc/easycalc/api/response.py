@@ -21,12 +21,27 @@ return_code_to_message_dict = {
    ReturnCode.success: "",
    ReturnCode.error_bad_request: "Bad Request",
    ReturnCode.error_invalid_expression: "Invalid Expression",
-   ReturnCode.error_invalid_expression: "Invalid Expression",
+   ReturnCode.error_invalid_operator: "Invalid Operator",
    ReturnCode.error_unknown: "Unknown Error Encountered"
 }
 
 def handle_response(return_code, data = None):
-    """ Build a response and determine correct http code to use """
+    """ Build a response and determine correct http code to use
+
+    Parameters
+    ----------
+    return_code : ReturnCode
+        return code for response
+    data : str
+        data to be returned
+
+    Returns
+    -------
+    dict
+        response as dict to be converted to json
+    int
+        http response code
+    """
     if return_code.value <= 20:
         success = True
     else:
@@ -41,6 +56,20 @@ def handle_response(return_code, data = None):
 
 
 def handle_exception(exception):
+    """ Wrapper around handle_response to handle exceptions
+
+    Parameters
+    ----------
+    exception : Exception
+        exception to be handled
+
+    Returns
+    -------
+    dict
+        response as dict to be converted to json
+    int
+        http response code
+    """
     if isinstance(exception, InvalidExpressionException):
         return handle_response(ReturnCode.error_invalid_expression)
     if isinstance(exception, InvalidOperatorException):
