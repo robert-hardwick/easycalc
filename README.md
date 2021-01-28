@@ -38,6 +38,8 @@ Run containerized web service
 
 Use curl to send some requests
 
+There are 2 API endpoints at /prefix and /infix for each calculator and both endpoints accept a single parameter ?expr which must be encoded in HTML ( e.g. + : %2B , * : %2A and " " : %20)
+
 \+ 1 1 :
 
     $ curl http://127.0.0.1:8888/prefix?expr=%2B%201%201
