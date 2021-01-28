@@ -4,6 +4,8 @@ Simple Infix and Prefix calculator and Flask-based web api.
 
 ## Setup
 
+Clone the repo and install python requirments.
+
     $ git clone https://github.com/robert-hardwick/easycalc.git
     $ cd <REPO>/easycalc
     $ python -m pip install -r requirements.txt
